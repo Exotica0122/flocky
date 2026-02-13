@@ -1,5 +1,5 @@
 ### Health check
-GET http://localhost:8081
+GET http://localhost:8081/actuator/health
 
 ## Auth
 
