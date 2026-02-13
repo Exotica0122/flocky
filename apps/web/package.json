@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "serve ./build/client",
+    "start": "serve build/client -s -l ${PORT:-3000}",
     "lint": "eslint --fix app",
     "lint:check": "eslint app",
     "format": "prettier --write \"app/**/*.{ts,tsx,js,jsx,json,css}\"",
