@@ -25,6 +25,7 @@ class SecurityConfig(
             }
             authorizeHttpRequests {
                 authorize("/api/auth/**", permitAll)
+                authorize("/actuator/health", permitAll)
                 authorize(anyRequest, authenticated)
             }
             addFilterBefore<UsernamePasswordAuthenticationFilter>(sessionAuthenticationFilter)
