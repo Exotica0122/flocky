@@ -1,15 +1,54 @@
 ### Health check
 GET http://localhost:8081
 
+## Auth
+
+### Register
+POST http://localhost:8081/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!",
+  "name": "Test User"
+}
+
+### Login
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Password123!"
+}
+
+### Logout
+POST http://localhost:8081/api/auth/logout
+Authorization: Bearer <session-token>
+
+### Verify email
+POST http://localhost:8081/api/auth/verify-email
+Content-Type: application/json
+
+{
+  "identifier": "test@example.com",
+  "value": "<verification-token>"
+}
+
+## Cell Groups
+
 ### List all cell groups
 GET http://localhost:8081/api/cell-groups
+Authorization: Bearer <session-token>
 
 ### Get cell group by ID
 GET http://localhost:8081/api/cell-groups/1
+Authorization: Bearer <session-token>
 
 ### Create cell group
 POST http://localhost:8081/api/cell-groups
 Content-Type: application/json
+Authorization: Bearer <session-token>
 
 {
   "name": "Alpha Group",
@@ -19,6 +58,7 @@ Content-Type: application/json
 ### Update cell group
 PUT http://localhost:8081/api/cell-groups/1
 Content-Type: application/json
+Authorization: Bearer <session-token>
 
 {
   "name": "Alpha Group Updated",
@@ -27,3 +67,4 @@ Content-Type: application/json
 
 ### Delete cell group
 DELETE http://localhost:8081/api/cell-groups/1
+Authorization: Bearer <session-token>
