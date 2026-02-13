@@ -1,10 +1,10 @@
 ### Health check
-GET http://localhost:8081/actuator/health
+GET http://localhost:8080/actuator/health
 
 ## Auth
 
 ### Register
-POST http://localhost:8081/api/auth/register
+POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### Login
-POST http://localhost:8081/api/auth/login
+POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
@@ -23,11 +23,11 @@ Content-Type: application/json
 }
 
 ### Logout
-POST http://localhost:8081/api/auth/logout
+POST http://localhost:8080/api/auth/logout
 Authorization: Bearer <session-token>
 
 ### Verify email
-POST http://localhost:8081/api/auth/verify-email
+POST http://localhost:8080/api/auth/verify-email
 Content-Type: application/json
 
 {
@@ -38,15 +38,15 @@ Content-Type: application/json
 ## Cell Groups
 
 ### List all cell groups
-GET http://localhost:8081/api/cell-groups
+GET http://localhost:8080/api/cell-groups
 Authorization: Bearer <session-token>
 
 ### Get cell group by ID
-GET http://localhost:8081/api/cell-groups/1
+GET http://localhost:8080/api/cell-groups/1
 Authorization: Bearer <session-token>
 
 ### Create cell group
-POST http://localhost:8081/api/cell-groups
+POST http://localhost:8080/api/cell-groups
 Content-Type: application/json
 Authorization: Bearer <session-token>
 
@@ -56,7 +56,7 @@ Authorization: Bearer <session-token>
 }
 
 ### Update cell group
-PUT http://localhost:8081/api/cell-groups/1
+PUT http://localhost:8080/api/cell-groups/1
 Content-Type: application/json
 Authorization: Bearer <session-token>
 
@@ -66,5 +66,5 @@ Authorization: Bearer <session-token>
 }
 
 ### Delete cell group
-DELETE http://localhost:8081/api/cell-groups/1
+DELETE http://localhost:8080/api/cell-groups/1
 Authorization: Bearer <session-token>
