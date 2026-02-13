@@ -1,8 +1,8 @@
 package com.flocky.apispring.auth.dto
 
+import com.flocky.apispring.common.validation.StrongPassword
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
-import jakarta.validation.constraints.Size
 
 data class RegisterRequest(
     @field:NotBlank
@@ -10,7 +10,7 @@ data class RegisterRequest(
     val email: String,
 
     @field:NotBlank
-    @field:Size(min = 8, message = "Password must be at least 8 characters")
+    @field:StrongPassword
     val password: String,
 
     @field:NotBlank
