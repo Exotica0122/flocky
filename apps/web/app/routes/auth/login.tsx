@@ -1,5 +1,5 @@
-import { Eye, EyeOff, GalleryVerticalEnd, Loader2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { Eye, EyeOff, GalleryVerticalEnd } from "lucide-react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 
@@ -13,24 +13,22 @@ import {
   FieldSeparator,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { useLogin, useSession } from "@/hooks/use-auth";
+import { useLogin } from "@/hooks/use-auth";
+import { requireGuest } from "@/lib/require-auth";
 import { cn } from "@/lib/utils";
+
+export function clientLoader() {
+  requireGuest();
+  return null;
+}
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { data: session, isPending, error } = useSession();
   const { mutateAsync: login, isPending: isLoggingIn } = useLogin();
   const navigate = useNavigate();
-
-  // redirect if the user is already logged in
-  useEffect(() => {
-    if (!isPending && session) {
-      navigate("/app/dashboard");
-    }
-  }, [session, isPending, navigate]);
 
   const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,22 +41,6 @@ export default function LoginPage() {
       toast.error(message);
     }
   };
-
-  if (isPending) {
-    return (
-      <div className="bg-muted flex min-h-svh flex-col items-center justify-center">
-        <Loader2 className="size-8 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-4">
-        <p className="text-destructive">세션을 불러오는데 실패했습니다</p>
-      </div>
-    );
-  }
 
   return (
     <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">

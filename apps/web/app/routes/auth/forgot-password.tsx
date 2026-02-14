@@ -7,7 +7,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { requireGuest } from "@/lib/require-auth";
 import { cn } from "@/lib/utils";
+
+export function clientLoader() {
+  requireGuest();
+  return null;
+}
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");

@@ -8,7 +8,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { useRegister } from "@/hooks/use-auth";
+import { requireGuest } from "@/lib/require-auth";
 import { cn } from "@/lib/utils";
+
+export function clientLoader() {
+  requireGuest();
+  return null;
+}
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
